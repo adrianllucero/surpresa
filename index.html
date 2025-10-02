@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para a mulher mais MARAVILHOSA desse 💖</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(120deg, #2b1717, #5c1717);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 10px; /* importante para celulares */
+      box-sizing: border-box;
+    }
+    button {
+      width: 80%;          /* ocupa 80% da tela em celular */
+      max-width: 300px;    /* não fica gigante em desktop */
+      padding: 15px;       /* ajusta o tamanho do botão */
+      font-size: clamp(16px, 4vw, 24px); /* nunca menor que 16px e nunca maior que 24px */
+      border: none;
+      border-radius: 50px;
+      background: #a33838;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(170, 79, 79, 0.7);
+      transition: transform 0.2s, background 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+      background: #c54c4c;
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="entrar()">Duvido Clicar</button>
+
+<script>
+function entrar() {
+  const audio = new Audio('musica.mp3');
+  audio.loop = true;
+  audio.volume = 0.5;
+  audio.play().catch(() => console.log('Autoplay bloqueado'));
+
+  // redireciona depois de 200ms
+  setTimeout(() => {
+    window.location.href = "amor.html";
+  }, 200);
+}
+</script>
+
+</body>
+</html>

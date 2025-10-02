@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adrian & Chiara 💖</title>
+<style>
+  body {
+    margin: 0;
+    padding: 15px 15px 100px 15px; /* aqui o 100px é o espaço extra embaixo */
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: linear-gradient(120deg, #161111, #271d1d);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(20px, 5vw, 36px);
+    margin: 15px 0;
+    color: #ffd9e0;
+    animation: fadeUp 1.5s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto 15px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255,77,109,0.7);
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    object-fit: cover;
+  }
+
+  .carousel img.active { opacity: 1; position: relative; }
+
+  button.carousel-btn {
+    background: rgba(255,77,109,0.8);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 10px 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1em;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s;
+  }
+
+  button.carousel-btn:hover { transform: scale(1.1); }
+
+  .message {
+    margin: 15px 10px;
+    font-size: clamp(16px, 3vw, 22px);
+    line-height: 1.5;
+    color: #fff4f4;
+    min-height: 120px;
+    white-space: pre-wrap;
+    font-family: 'Segoe UI', sans-serif;
+    animation: fadeUp 2s ease forwards;
+    opacity: 0;
+  }
+
+  .time-together {
+    margin: 20px 10px;
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: 1.4;
+    animation: fadeUp 2s ease forwards;
+    opacity: 0;
+  }
+
+  .time-together span.num { color: #ffffff; font-weight: bold; }
+  .time-together span.label { color: #ffe4e4; margin-right: 5px; }
+
+  .days-total {
+    margin-top: 10px;
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: #ffd9e0;
+    animation: fadeUp 2.5s ease forwards;
+    opacity: 0;
+  }
+
+  .heart {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: red;
+    transform: rotate(45deg);
+    animation: float 5s linear infinite;
+    opacity: 0.8;
+    z-index: 0;
+  }
+
+  .heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before { top: -7.5px; left: 0; }
+  .heart::after { left: 7.5px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(45deg) scale(0.5); opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-500px) rotate(45deg) scale(1); opacity: 0; }
+  }
+
+  /* Mini player animado */
+  #miniPlayer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.8em;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    animation: fadeInMini 2s ease forwards 1s;
+  }
+
+  @keyframes fadeInMini {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    100% { opacity: 1; transform: translate(-50%, 0); }
+  }
+
+  #miniPlayer button {
+    background: #ff4d6d;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 0.9em;
+  }
+
+  #miniPlayer input[type=range] { cursor: pointer; }
+
+  #miniPlayer .msg {
+    opacity: 0.7;
+    font-size: 0.8em;
+    transition: opacity 0.3s;
+  }
+
+  #miniPlayer:hover .msg { opacity: 1; }
+
+  @media (max-width: 480px) {
+    .carousel img { border-radius: 15px; }
+    button.carousel-btn { padding: 6px 12px; font-size: 0.9em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="carousel">
+  <img src="Foto 1.jpeg" class="active" alt="Foto 1">
+  <img src="Foto 2.jpeg" alt="Foto 2">
+  <img src="Foto 3.jpeg" alt="Foto 3">
+  <img src="Foto 4.jpeg" alt="Foto 4">
+  <img src="Foto 5.jpeg" alt="Foto 5">
+  <img src="Foto 6.jpeg" alt="Foto 6">
+  <img src="Foto 7.jpeg" alt="Foto 7">
+  <img src="Foto 8.jpeg" alt="Foto 8">
+  <button class="carousel-btn" onclick="prevSlide()">⟵</button>
+  <button class="carousel-btn" onclick="nextSlide()">⟶</button>
+</div>
+
+<h1>Adrian & Chiara</h1>
+
+<div class="message">
+Meu bem, desde que você chegou, meus dias ficaram mais leves, minha vida ganhou mais cor e meu coração encontrou um lar. 
+Isso aqui é só uma pequena forma de dizer o quanto você é especial para mim. Te amo hoje e para sempre. 
+LINDA, PERFEITA, MARAVILHOSA, GOSTOSA, DELICITA!! AMOR DA MINHA VIDA ❤️❤️❤️
+</div>
+
+<div class="time-together">
+  COMPARTILHANDO MOMENTOS HÁ <br>
+  <span id="time"></span>
+</div>
+
+<div class="days-total" id="daysTotal"></div>
+
+<!-- Mini player -->
+<div id="miniPlayer">
+  <button onclick="toggleMusic()">▶/⏸</button>
+  <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
+  <div class="msg">Clique para ouvir nossa música 🎵</div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<script>
+  let currentIndex=0;
+  const slides=document.querySelectorAll('.carousel img');
+  function showSlide(index){slides.forEach((img,i)=>img.classList.toggle('active',i===index));}
+  function nextSlide(){currentIndex=(currentIndex+1)%slides.length; showSlide(currentIndex);}
+  function prevSlide(){currentIndex=(currentIndex-1+slides.length)%slides.length; showSlide(currentIndex);}
+  setInterval(nextSlide,5000);
+
+  const startDate=new Date("2025-01-01T00:00:00");
+  const timeEl=document.getElementById('time');
+  const daysTotalEl=document.getElementById('daysTotal');
+
+  function updateTimeTogether(){
+    const now=new Date();
+    let delta=Math.floor((now-startDate)/1000);
+
+    const years=Math.floor(delta/(3600*24*365)); delta-=years*3600*24*365;
+    const months=Math.floor(delta/(3600*24*30)); delta-=months*3600*24*30;
+    const days=Math.floor(delta/(3600*24)); delta-=days*3600*24;
+    const hours=Math.floor(delta/3600); delta-=hours*3600;
+    const minutes=Math.floor(delta/60); delta-=minutes*60;
+    const seconds=delta;
+
+    timeEl.innerHTML=`
+      <span class="num">${years}</span> <span class="label">anos</span>
+      <span class="num">${months}</span> <span class="label">meses</span>
+      <span class="num">${days}</span> <span class="label">dias</span>
+      <span class="num">${hours}</span> <span class="label">horas</span>
+      <span class="num">${minutes}</span> <span class="label">minutos</span>
+      <span class="num">${seconds}</span> <span class="label">segundos</span>
+    `;
+
+    const totalDays=Math.floor((now-startDate)/(1000*60*60*24));
+    daysTotalEl.textContent=`Isso tudo dá ${totalDays} dias maravilhosos ao seu lado ❤️`;
+  }
+
+  updateTimeTogether();
+  setInterval(updateTimeTogether,1000);
+
+  function createHeart(){
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.style.left=Math.random()*window.innerWidth+'px';
+    heart.style.animationDuration=(3+Math.random()*3)+'s';
+    heart.style.transform=`rotate(45deg) scale(${0.5+Math.random()*0.5})`;
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  }
+  setInterval(createHeart,500);
+
+  const music=document.getElementById('bgMusic');
+  function toggleMusic(){ if(music.paused) music.play(); else music.pause(); }
+  function changeVolume(vol){ music.volume=vol; }
+
+  const params=new URLSearchParams(window.location.search);
+  if(params.get('play')==='1'){ music.play().catch(()=>console.log('Clique para tocar a música')); }
+</script>
+</body>
+</html>
