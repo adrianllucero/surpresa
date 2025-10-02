@@ -216,7 +216,7 @@ LINDA, PERFEITA, MARAVILHOSA, GOSTOSA, DELICITA!! AMOR DA MINHA VIDA ❤️❤�
 <div id="miniPlayer">
   <button onclick="toggleMusic()">▶/⏸</button>
   <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
-  <div class="msg">Clique para ouvir nossa música 🎵</div>
+  <div class="msg">CLICA AQUI ANTES! 🎵</div>
 </div>
 
 <audio id="bgMusic" loop>
@@ -240,7 +240,7 @@ LINDA, PERFEITA, MARAVILHOSA, GOSTOSA, DELICITA!! AMOR DA MINHA VIDA ❤️❤�
     const now=new Date();
     let delta=Math.floor((now-startDate)/1000);
 
-    const years=Math.floor(delta/(3600*24*365)); delta-=years*3600*24*365;
+    //const years=Math.floor(delta/(3600*24*365)); delta-=years*3600*24*365;
     const months=Math.floor(delta/(3600*24*30)); delta-=months*3600*24*30;
     const days=Math.floor(delta/(3600*24)); delta-=days*3600*24;
     const hours=Math.floor(delta/3600); delta-=hours*3600;
@@ -248,7 +248,7 @@ LINDA, PERFEITA, MARAVILHOSA, GOSTOSA, DELICITA!! AMOR DA MINHA VIDA ❤️❤�
     const seconds=delta;
 
     timeEl.innerHTML=`
-      <span class="num">${years}</span> <span class="label">anos</span>
+     
       <span class="num">${months}</span> <span class="label">meses</span>
       <span class="num">${days}</span> <span class="label">dias</span>
       <span class="num">${hours}</span> <span class="label">horas</span>
@@ -283,3 +283,4 @@ LINDA, PERFEITA, MARAVILHOSA, GOSTOSA, DELICITA!! AMOR DA MINHA VIDA ❤️❤�
 </script>
 </body>
 </html>
+
